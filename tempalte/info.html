@@ -1,0 +1,25 @@
+<header class="u-head">
+    <div class="u-head-menu">展开</div>
+    主题
+    <span>登录</span>
+</header>
+
+<ul class="u-main u-main-info">
+    <li>
+        <h2>{{data.title}}</h2>
+        <img class="u-img" src={{data.author.avatar_url}} alt="">
+        <div class="info">
+            <p>
+                <span>{{data.author.loginname}}</span>
+            </p>
+            <p>
+                <span>{{data.create_at}}</span>
+                <span>{{data.reply_count}}次游览</span>
+            </p>
+        </div>
+    </li>
+</ul>
+
+<div class="u-info-text" re-text  ng-bind-html='info' >
+
+</div>

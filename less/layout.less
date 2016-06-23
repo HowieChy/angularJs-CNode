@@ -1,0 +1,120 @@
+@import "init";
+
+@media screen and (min-width: 320px) and  (max-width: 360px){
+  html {font-size: 14px;}
+}
+
+@media screen and (min-width: 360px)and  (max-width: 400px) {
+  html {font-size: 16px;}
+}
+
+@media screen and (min-width: 400px)and  (max-width: 440px) {
+  html {font-size: 18px;}
+}
+
+@media screen and (min-width: 440px)and  (max-width: 480px) {
+  html {font-size: 20px;}
+}
+
+@media screen and (min-width: 480px) and  (max-width: 640px){
+  html {font-size: 22px;}
+}
+
+@media screen and (min-width: 640px) {
+  html {font-size: 28px;}
+}
+
+/* 头部布局 */
+.u-head{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+
+    .u-head-menu{
+        float: left;
+        padding-left:10px;
+    }
+
+    span{
+        display: inline-block;
+        float: right;
+        padding-right: 10px;
+    }
+}
+.u-main li{
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+
+    h3{
+        font-size: 15px;
+        font-weight: bold;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 10px;
+
+        .title-jin{
+            background: #4acda1;
+            color: #fff;
+        }
+        .title-wen{
+            background: #3498DB;
+            color: #fff;
+        }
+        .title-zhao{
+            background:#9B59B6 ;
+            color: #fff;
+        }
+        .title-wu{
+            background:#ccc ;
+            color: #fff;
+        }
+
+
+        span{
+            display: inline-block;
+            border-radius: 5px;
+            padding: 4px;
+            margin-right: 8px;
+            border: none;
+
+        }
+
+    }
+
+    .u-img{
+        float: left;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        margin-right: 16px;
+    }
+
+    .info{
+        p{
+            display: flex;
+            margin-bottom: 6px;
+
+            em{
+                color: @active-color;
+            }
+            span:first-child{
+                flex: 1;
+
+            }
+            span:last-child{
+
+            }
+        }
+    }
+}
+
+
+
+
+

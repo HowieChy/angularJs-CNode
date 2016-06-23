@@ -1,0 +1,22 @@
+<input type="button" value="下一页" class="next" ng-click="next()">
+<header class="u-head">
+    <div class="u-head-menu">展开</div>
+    全部
+    <span>登录</span>
+</header>
+<ul class="u-main">
+    <li ng-repeat="data in all" repeat-finish >
+        <h3><span  re-text>{{data.tab|tab}}</span><a href="#/{{data.id}}">{{data.title}}</a></h3>
+        <img class="u-img" src={{data.author.avatar_url}} alt="">
+        <div class="info">
+            <p>
+                <span>{{data.author.loginname}}</span>
+                <span><em>{{data.reply_count}}</em>/{{data.visit_count}}</span>
+            </p>
+            <p>
+                <span>{{data.create_at}}</span>
+                <span>{{data.last_reply_at}}</span>
+            </p>
+        </div>
+    </li>
+</ul>
