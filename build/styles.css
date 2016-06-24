@@ -389,3 +389,36 @@ input, textarea {
   width: 100%;
   border-bottom: 1px solid #ccc;
 }
+.reply_content table, .topic_content table {
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font: inherit;
+}
+.reply_content table tr, .topic_content table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.reply_content table tr:nth-child(2n), .topic_content table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+.reply_content table tr th, .topic_content table tr th {
+  font-weight: 700;
+}
+.reply_content table tr td, .reply_content table tr th, .topic_content table tr td, .topic_content table tr th {
+  border: 1px solid #ccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+#preview-modal, .cnode-app-download {
+  text-align: center;
+}
+.reply_content table tr td > :first-child, .reply_content table tr th > :first-child, .topic_content table tr td > :first-child, .topic_content table tr th > :first-child {
+  margin-top: 0;
+}
+.reply_content table tr td > :last-child, .reply_content table tr th > :last-child, .topic_content table tr td > :last-child, .topic_content table tr th > :last-child {
+  margin-bottom: 0;
+}
