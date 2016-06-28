@@ -4,19 +4,20 @@
 
 var forumDirective = angular.module('forumDirective', ['ngResource']);
 
+//监听ng-repeat
 forumDirective.directive('repeatFinish',function(){
     return {
         link: function(scope,element,attr){
-            //console.log(scope.$index)
             if(scope.$last == true){
-                console.log('ng-repeat执行完毕');
-               /* scope.$eval( attr.repeatFinish );*/
-                scope.abc=1;
+/*                console.log(scope)
+                console.log('ng-repeat执行完毕');*/
+                scope.$eval( attr.repeatFinish );
             }
-        },
+        }
     }
 });
 
+//帖子分类
 forumDirective.directive('reText',function($compile,$timeout){
     return {
         link:function(scope,element,attr){
@@ -27,13 +28,10 @@ forumDirective.directive('reText',function($compile,$timeout){
                   case '招聘':element.addClass('title-zhao');break;
                   case '暂无':element.addClass('title-wu');break;
               }
-                console.log(element.html());
             })
-
         }
-
     }
+});
 
-})
 
 

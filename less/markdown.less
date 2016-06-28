@@ -137,7 +137,8 @@ div pre.prettyprint {
     border: none;
     margin: 20px -10px;
     border-width: 1px 0;
-    background: #f7f7f7
+    background: #f7f7f7;
+    overflow: auto;
 }
 
 form, textarea {
@@ -149,8 +150,12 @@ input, textarea {
 }
 
 .markdown-text{
+    img{
+        max-width: 100%;
+    }
     h2{
         font-size: 26px;
+        line-height: 26px;
         margin: 20px 0 10px 0;
     }
     h2:after{
@@ -161,6 +166,7 @@ input, textarea {
     }
     h3{
         font-size: 18px;
+        line-height: 22px;
         margin: 18px 0;
     }
     h3:after{
@@ -169,6 +175,18 @@ input, textarea {
         width: 100%;
         border-bottom: 1px solid #ccc;
     }
+    h4{
+        font-size: 18px;
+        line-height: 20px;
+        margin: 18px 0;
+    }
+    h4:after{
+        content: '';
+        display: inline-block;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+    }
+
 
 
 }

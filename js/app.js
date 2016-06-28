@@ -26,6 +26,8 @@ forum.config(['$routeProvider',
     .otherwise({
         redirectTo: '/all/list'
       });
+
+
   }]);
 
 

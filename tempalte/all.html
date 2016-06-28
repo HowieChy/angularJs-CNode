@@ -1,4 +1,4 @@
-<input type="button" value="下一页" class="next" ng-click="next()">
+
 <header class="u-head">
     <div class="u-head-menu">展开</div>
     全部
@@ -14,9 +14,14 @@
                 <span><em>{{data.reply_count}}</em>/{{data.visit_count}}</span>
             </p>
             <p>
-                <span>{{data.create_at}}</span>
-                <span>{{data.last_reply_at}}</span>
+                <span>{{data.create_at|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                <span>{{data.last_reply_at|time}}</span>
             </p>
         </div>
     </li>
+
 </ul>
+
+<section class="page-foot">
+    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+</section>
