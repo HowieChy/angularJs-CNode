@@ -320,6 +320,15 @@ textarea {
 .u-info-text {
   padding: 20px;
 }
+.u-info-re {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+  font-size: 20px;
+}
+.u-info-re span {
+  color: #4acda1;
+}
 .markdown-text p, .preview p {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -346,6 +355,9 @@ textarea {
 }
 .markdown-text img {
   cursor: pointer;
+}
+.markdown-text p a {
+  color: #08c;
 }
 .panel .markdown-text a {
   color: #08c;

@@ -1,13 +1,14 @@
-
 <header class="u-head">
     <div class="u-head-menu">展开</div>
     全部
     <span>登录</span>
 </header>
-<ul class="u-main">
+<ul class="u-main" infinite-scroll='next()'   infinite-scroll-distance='0'>
     <li ng-repeat="data in all" repeat-finish >
-        <h3><span  re-text>{{data.tab|tab}}</span><a href="#/{{data.id}}">{{data.title}}</a></h3>
-        <img class="u-img" src={{data.author.avatar_url}} alt="">
+      <!--  <h3><span  re-text>{{data.tab|tab}}</span><a href="#/{{data.id}}">{{data.title}}</a></h3>-->
+        <h3><span  re-text>{{data.tab|tab}}</span><a ui-sref="son({id:data.id})">{{data.title}}</a></h3>
+       <!-- <h3><span  re-text>{{data.tab|tab}}</span><a ng-click="hide()" ui-sref="start.son({id:data.id})">{{data.title}}</a></h3>-->
+        <img class="u-img" ng-src={{data.author.avatar_url}} alt="">
         <div class="info">
             <p>
                 <span>{{data.author.loginname}}</span>
@@ -19,9 +20,5 @@
             </p>
         </div>
     </li>
-
 </ul>
-
-<section class="page-foot">
-    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
-</section>
+<div ui-view></div>

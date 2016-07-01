@@ -21,6 +21,7 @@ forumDirective.directive('repeatFinish',function(){
 forumDirective.directive('reText',function($compile,$timeout){
     return {
         link:function(scope,element,attr){
+
             $timeout(function(){
               switch (element.html()){
                   case '精华':element.addClass('title-jin');break;
@@ -32,6 +33,7 @@ forumDirective.directive('reText',function($compile,$timeout){
         }
     }
 });
+
 
 
 

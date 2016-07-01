@@ -7,14 +7,14 @@
 <ul class="u-main u-main-info">
     <li>
         <h2>{{data.title}}</h2>
-        <img class="u-img" src={{data.author.avatar_url}} alt="">
+        <img class="u-img" ng-src={{data.author.avatar_url}} alt="">
         <div class="info">
             <p>
                 <span>{{data.author.loginname}}</span>
             </p>
             <p>
                 <span>{{data.create_at|date:'yyyy-MM-dd HH:mm:ss'}}</span>
-                <span>{{data.reply_count}}次游览</span>
+                <span>{{data.visit_count}}次游览</span>
             </p>
         </div>
     </li>
@@ -23,3 +23,20 @@
 <div class="u-info-text topic_content" re-text  ng-bind-html='info' >
 
 </div>
+
+<p class="u-info-re"><span>{{data.reply_count}} </span> 个回复</p>
+<ul class="u-main">
+    <li ng-repeat="data in all" repeat-finish >
+        <img class="u-img" ng-src={{data.author.avatar_url}}/>
+        <div class="info">
+            <p>
+                <span>{{data.author.loginname}}</span>
+            </p>
+            <p>
+                <span>发布于2：{{data.create_at|time}}</span>
+            </p>
+        </div>
+        <p ng-bind-html="data.content"></p>
+    </li>
+
+</ul>

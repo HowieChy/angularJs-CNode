@@ -1,11 +1,11 @@
 'use strict';
 
 
-var forumControllers = angular.module('forumControllers', ['ngResource','ngSanitize','ui.bootstrap']);
+var forumControllers = angular.module('forumControllers', ['ngResource','ngSanitize','infinite-scroll']);
 
 //列表页
-forumControllers.controller('list', ['$scope','$http','$resource','$cacheFactory',
-  function($scope,$http,$resource,$cacheFactory) {
+forumControllers.controller('list', ['$scope','$http','$resource','$location','$rootScope','$state',
+  function($scope,$http,$resource,$cacheFactory,$location,$rootScope,$state) {
       /*    $scope.num=1;
        $resource('https://cnodejs.org/api/v1/topics?tab=all&page='+ $scope.num).get(function(data){
        /!*console.log(data.data)*!/
@@ -17,17 +17,19 @@ forumControllers.controller('list', ['$scope','$http','$resource','$cacheFactory
        $scope.all=$scope.all.concat(data.data)
        });
        };*/
+      $scope.$on('$stateChangeSuccess',
+          function(event, toState, toParams, fromState, fromParams){
+              console.log(1);
+          });
 
       //首页加载
-      $scope.num = 1
+      $scope.num=1;
       $http({
           method: 'get',
           url: 'https://cnodejs.org/api/v1/topics?tab=all&page=' + $scope.num,
           cache: 'true'
       }).success(function (data) {
           $scope.all = data.data;
-
-          /*console.log(data.data);*/
       });
 
       //下一页加载
@@ -40,32 +42,8 @@ forumControllers.controller('list', ['$scope','$http','$resource','$cacheFactory
           }).success(function (data) {
               $scope.all = $scope.all.concat(data.data);
               /*console.log(data.data);*/
-
           });
       };
-
-      //分页
-      $scope.maxSize = 3;
-      $scope.totalItems = 99;
-      $scope.currentPage = 1;
-      $scope.bigTotalItems = 180;
-      $scope.bigCurrentPage = 1;
-      $scope.$on('selectPage', function(e, newLocation) {
-          if(typeof newLocation == 'number'){
-              $scope.num=newLocation;
-          }else{
-              $scope.num=newLocation.text;
-          }
-          $http({
-              method: 'get',
-              url: 'https://cnodejs.org/api/v1/topics?tab=all&page=' + $scope.num,
-              cache: 'true'
-          }).success(function (data) {
-              $scope.all = data.data;
-              /*console.log(data.data);*/
-
-          });
-      });
 
   }
   ]);
@@ -78,15 +56,26 @@ forumControllers.controller('info', ['$scope','$http','$resource','$location',
                 console.log(data.data)
                 $scope.all=data.data;
             });*/
-          $scope.number=$location.path();
-        /*  console.log($scope.number);*/
+          $scope.number=(function(){
+              var a=$location.path();
+              a= a.substring(4);
+              return a
+          })();
+
+        $scope.$on('$stateChangeSuccess',
+            function(event, toState, toParams, fromState, fromParams){
+                console.log(2);
+            });
+
+         // console.log($scope.number);
           $http({
                 method:"get",
                 url:'https://cnodejs.org/api/v1/topic'+$scope.number,
                 params:{'mdrender':'true'}
                 }).success(function(data){
-                  $scope.data=data.data;
-                  $scope.info=$scope.data.content;
+                      $scope.data=data.data;
+                      $scope.info=$scope.data.content;
+                      $scope.all=$scope.data.replies;
                 })
 
         }
