@@ -23,9 +23,13 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
               console.log(2);
              //angular.element(document).find('ul').attr('i-scroll','');
           });
-      console.log(currentDetails);
+      //console.log(currentDetails.data.data);
       //首页加载 预载入Resolve
-      $scope.all = currentDetails.data.data;
+      if($rootScope.allInfo){
+          $scope.all=$rootScope.allInfo;
+      }else{
+          $scope.all = currentDetails.data.data;
+      }
 
       //下一页加载
       $scope.num=1;
@@ -42,10 +46,22 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
                   $scope.all = $scope.all.concat(data.data);
                   /*console.log(data.data);*/
                   $scope.door=true;
+                  $rootScope.allInfo=$scope.all;
               });
+
           }
 
       };
+    /*  window.onscroll=function(){
+          var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+          $rootScope.allScroll=scrollTop;
+          console.log( $rootScope.allScroll)
+      }*/
+      $scope.top=(function(){
+          var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+          document.documentElement.scrollTop=900;
+          console.log(document.documentElement.scrollTop)
+      })()
 
   }
   ]);

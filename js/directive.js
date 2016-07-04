@@ -49,7 +49,15 @@ forumDirective.directive('iScroll',function($timeout){
         }
     }
 });
-
-
+/*
+forumDirective.directive('iTop',function($rootScope){
+    return {
+        link:function(scope,element,attr){
+            var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+            console.log($rootScope.allScroll);
+            scrollTop=$rootScope.allScroll;
+        }
+    }
+});*/
 
 
