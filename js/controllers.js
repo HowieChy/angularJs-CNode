@@ -1,7 +1,7 @@
 'use strict';
 
 
-var forumControllers = angular.module('forumControllers', ['ngResource','ngSanitize','infinite-scroll']);
+var forumControllers = angular.module('forumControllers', ['ngResource','ngSanitize']);
 
 //列表页
 forumControllers.controller('list', ['$scope','$http','$resource','$location','$rootScope','$state',
@@ -19,7 +19,7 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
        };*/
       $scope.$on('$stateChangeSuccess',
           function(event, toState, toParams, fromState, fromParams){
-              console.log(1);
+              //console.log(1);
           });
 
       //首页加载
@@ -33,16 +33,22 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
       });
 
       //下一页加载
+      $scope.door=true;
       $scope.next = function () {
-          $scope.num++;
-          $http({
-              method: 'get',
-              url: 'https://cnodejs.org/api/v1/topics?tab=all&page=' + $scope.num,
-              cache: 'true'
-          }).success(function (data) {
-              $scope.all = $scope.all.concat(data.data);
-              /*console.log(data.data);*/
-          });
+          if($scope.door){
+              $scope.door=false;
+              $scope.num++;
+              $http({
+                  method: 'get',
+                  url: 'https://cnodejs.org/api/v1/topics?tab=all&page=' + $scope.num,
+                  cache: 'true'
+              }).success(function (data) {
+                  $scope.all = $scope.all.concat(data.data);
+                  /*console.log(data.data);*/
+                  $scope.door=true;;
+              });
+          }
+
       };
 
   }

@@ -3,7 +3,8 @@
     全部
     <span>登录</span>
 </header>
-<ul class="u-main" infinite-scroll='next()'   infinite-scroll-distance='0'>
+<!--<ul class="u-main" infinite-scroll='next()'   infinite-scroll-distance='0'>-->
+<ul class="u-main" i-scroll='next()'>
     <li ng-repeat="data in all" repeat-finish >
       <!--  <h3><span  re-text>{{data.tab|tab}}</span><a href="#/{{data.id}}">{{data.title}}</a></h3>-->
         <h3><span  re-text>{{data.tab|tab}}</span><a ui-sref="son({id:data.id})">{{data.title}}</a></h3>
