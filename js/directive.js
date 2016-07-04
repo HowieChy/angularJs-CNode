@@ -38,12 +38,14 @@ forumDirective.directive('reText',function($compile,$timeout){
 forumDirective.directive('iScroll',function($timeout){
     return {
         link:function(scope,element,attr){
-            window.onscroll=function(){
-                var scrollTop=document.documentElement.scorllTop||document.body.scrollTop;
-                if(scrollTop+document.documentElement.clientHeight+500>=element[0].offsetHeight+element[0].offsetTop){
-                    scope.$eval( attr.iScroll)
+            $timeout(function(){
+                window.onscroll=function(){
+                    var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                    if(scrollTop+document.documentElement.clientHeight+500>=element[0].offsetHeight+element[0].offsetTop){
+                        scope.$eval( attr.iScroll);
+                    }
                 }
-            }
+            })
         }
     }
 });

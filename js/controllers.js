@@ -4,8 +4,8 @@
 var forumControllers = angular.module('forumControllers', ['ngResource','ngSanitize']);
 
 //列表页
-forumControllers.controller('list', ['$scope','$http','$resource','$location','$rootScope','$state',
-  function($scope,$http,$resource,$cacheFactory,$location,$rootScope,$state) {
+forumControllers.controller('list', ['$scope','$http','$resource','$location','$rootScope','$state','person','currentDetails',
+  function($scope,$http,$resource,$cacheFactory,$location,$rootScope,$state,currentDetails,person) {
       /*    $scope.num=1;
        $resource('https://cnodejs.org/api/v1/topics?tab=all&page='+ $scope.num).get(function(data){
        /!*console.log(data.data)*!/
@@ -19,20 +19,16 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
        };*/
       $scope.$on('$stateChangeSuccess',
           function(event, toState, toParams, fromState, fromParams){
-              //console.log(1);
+              window.onscroll=null;
+              console.log(2);
+             //angular.element(document).find('ul').attr('i-scroll','');
           });
-
-      //首页加载
-      $scope.num=1;
-      $http({
-          method: 'get',
-          url: 'https://cnodejs.org/api/v1/topics?tab=all&page=' + $scope.num,
-          cache: 'true'
-      }).success(function (data) {
-          $scope.all = data.data;
-      });
+      console.log(currentDetails);
+      //首页加载 预载入Resolve
+      $scope.all = currentDetails.data.data;
 
       //下一页加载
+      $scope.num=1;
       $scope.door=true;
       $scope.next = function () {
           if($scope.door){
@@ -45,7 +41,7 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
               }).success(function (data) {
                   $scope.all = $scope.all.concat(data.data);
                   /*console.log(data.data);*/
-                  $scope.door=true;;
+                  $scope.door=true;
               });
           }
 
@@ -70,7 +66,7 @@ forumControllers.controller('info', ['$scope','$http','$resource','$location',
 
         $scope.$on('$stateChangeSuccess',
             function(event, toState, toParams, fromState, fromParams){
-                console.log(2);
+                window.onscroll=null;
             });
 
          // console.log($scope.number);

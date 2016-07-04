@@ -16,8 +16,17 @@ forum.config(['$stateProvider','$urlRouterProvider',
         .state('start', {
             url:'/all',
             templateUrl: 'tempalte/all.html',
-            controller: 'list'
-
+            controller: 'list',
+            resolve:{
+                currentDetails: function($http) {
+                    return     $http({
+                        method: 'get',
+                        url: 'https://cnodejs.org/api/v1/topics?tab=all&page=1'
+                    })
+                },
+                person: function() {
+                }
+            }
           })
         //.state('start.son', {
         .state('son', {
@@ -29,9 +38,6 @@ forum.config(['$stateProvider','$urlRouterProvider',
             templateUrl: 'tempalte/商品详情.html',
             controller: 'xq'
         })*/
-    /*    .otherwise({
-            redirectTo: '/all/list'
-          });*/
 
 
   }]);
