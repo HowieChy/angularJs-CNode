@@ -19,11 +19,8 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
        };*/
       $scope.$on('$stateChangeSuccess',
           function(event, toState, toParams, fromState, fromParams){
-              window.onscroll=null;
-              console.log(2);
-             //angular.element(document).find('ul').attr('i-scroll','');
           });
-      //console.log(currentDetails.data.data);
+      //console.log(currentDetails);
       //首页加载 预载入Resolve
       if($rootScope.allInfo){
           $scope.all=$rootScope.allInfo;
@@ -48,27 +45,14 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
                   $scope.door=true;
                   $rootScope.allInfo=$scope.all;
               });
-
           }
-
       };
-    /*  window.onscroll=function(){
-          var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-          $rootScope.allScroll=scrollTop;
-          console.log( $rootScope.allScroll)
-      }*/
-      $scope.top=(function(){
-          var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-          document.documentElement.scrollTop=900;
-          console.log(document.documentElement.scrollTop)
-      })()
-
   }
   ]);
 
 //详情页
-forumControllers.controller('info', ['$scope','$http','$resource','$location',
-    function($scope,$http,$resource,$location) {
+forumControllers.controller('info', ['$scope','$http','$resource','$location','$rootScope',
+    function($scope,$http,$resource,$location,$rootScope) {
           /*  $scope.num=1;
             $resource('https://cnodejs.org/api/v1/topics?tab=all&page='+ $scope.num).get(function(data){
                 console.log(data.data)
@@ -85,7 +69,6 @@ forumControllers.controller('info', ['$scope','$http','$resource','$location',
                 window.onscroll=null;
             });
 
-         // console.log($scope.number);
           $http({
                 method:"get",
                 url:'https://cnodejs.org/api/v1/topic'+$scope.number,
