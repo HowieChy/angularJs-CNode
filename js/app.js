@@ -22,7 +22,8 @@ forum.config(['$stateProvider','$urlRouterProvider',
                 currentDetails: function($http) {
                     return     $http({
                         method: 'get',
-                        url: 'https://cnodejs.org/api/v1/topics?tab=all&page=1'
+                        url: 'https://cnodejs.org/api/v1/topics?tab=all&page=1',
+                        cache: 'true'
                     })
                 }
             },

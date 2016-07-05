@@ -525,7 +525,8 @@
 	                currentDetails: function($http) {
 	                    return     $http({
 	                        method: 'get',
-	                        url: 'https://cnodejs.org/api/v1/topics?tab=all&page=1'
+	                        url: 'https://cnodejs.org/api/v1/topics?tab=all&page=1',
+	                        cache: 'true'
 	                    })
 	                }
 	            },
@@ -584,6 +585,7 @@
 	      //首页加载 预载入Resolve
 	      if($rootScope.allInfo){
 	          $scope.all=$rootScope.allInfo;
+	          console.log(1)
 	      }else{
 	          $scope.all = currentDetails.data.data;
 	      }
@@ -632,7 +634,7 @@
 	          $http({
 	                method:"get",
 	                url:'https://cnodejs.org/api/v1/topic'+$scope.number,
-	                params:{'mdrender':'true'}
+	                params:{'mdrender':'true'},
 	                }).success(function(data){
 	                      $scope.data=data.data;
 	                      $scope.info=$scope.data.content;

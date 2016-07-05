@@ -24,6 +24,7 @@ forumControllers.controller('list', ['$scope','$http','$resource','$location','$
       //首页加载 预载入Resolve
       if($rootScope.allInfo){
           $scope.all=$rootScope.allInfo;
+          console.log(1)
       }else{
           $scope.all = currentDetails.data.data;
       }
@@ -72,7 +73,7 @@ forumControllers.controller('info', ['$scope','$http','$resource','$location','$
           $http({
                 method:"get",
                 url:'https://cnodejs.org/api/v1/topic'+$scope.number,
-                params:{'mdrender':'true'}
+                params:{'mdrender':'true'},
                 }).success(function(data){
                       $scope.data=data.data;
                       $scope.info=$scope.data.content;
