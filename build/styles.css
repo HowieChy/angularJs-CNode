@@ -115,36 +115,6 @@ textarea {
   color: #4acda1;
   border-top: 1px solid #4acda1;
 }
-@media screen and (min-width: 320px) and (max-width: 360px) {
-  html {
-    font-size: 14px;
-  }
-}
-@media screen and (min-width: 360px) and (max-width: 400px) {
-  html {
-    font-size: 16px;
-  }
-}
-@media screen and (min-width: 400px) and (max-width: 440px) {
-  html {
-    font-size: 18px;
-  }
-}
-@media screen and (min-width: 440px) and (max-width: 480px) {
-  html {
-    font-size: 20px;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 640px) {
-  html {
-    font-size: 22px;
-  }
-}
-@media screen and (min-width: 640px) {
-  html {
-    font-size: 28px;
-  }
-}
 /* 头部布局 */
 .u-head {
   height: 40px;
